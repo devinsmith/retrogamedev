@@ -1,0 +1,39 @@
+///////////////////////////////////////////////////////////
+// KEY1.CPP: Test Program for KeyEvent().
+///////////////////////////////////////////////////////////
+
+#include <iostream.h>
+#include <bios.h>
+
+#define CTRL_C 0x2e03
+
+// Function prototype.
+int KeyEvent(void);
+
+///////////////////////////////////////////////////////////
+// main()
+///////////////////////////////////////////////////////////
+int main(void)
+{
+  int k;
+
+  while ((k = KeyEvent()) != CTRL_C)
+    if (k) cout << "Key value: " << k << '\n';
+
+  return 1;
+}
+
+///////////////////////////////////////////////////////////
+// KeyEvent()
+//
+// This function gathers presses "on the fly."
+///////////////////////////////////////////////////////////
+int KeyEvent(void)
+{
+  // Check for key press.
+  int key = bioskey(1);
+
+  // Get key if one is available.
+  if (key) key = bioskey(0);
+  return key;
+}
