@@ -122,3 +122,112 @@ void Windw::WindwError(char *s)
   abort();
 }
 
+// --------------------------------------------------------
+// Implementation of the CapWindw class
+// --------------------------------------------------------
+
+///////////////////////////////////////////////////////////
+// CapWindw::CapWindw()
+///////////////////////////////////////////////////////////
+CapWindw::CapWindw(int x, int y, int w, int h,
+    int brd, int buf, char *s) :
+  Windw(x, y, w, h, brd, buf)
+{
+  strcpy(label, s);
+}
+
+///////////////////////////////////////////////////////////
+// CapWindw::DrawWindow()
+///////////////////////////////////////////////////////////
+void CapWindw::DrawWindow(void)
+{
+  // Draw basic window.
+  Windw::DrawWindow();
+
+  // Draw caption bar.
+  DrawCapBar();
+}
+
+///////////////////////////////////////////////////////////
+// CapWindw::SetCaption()
+///////////////////////////////////////////////////////////
+void CapWindw::SetCaption(char *s)
+{
+  strcpy(label, s);
+  DrawCapBar();
+}
+
+///////////////////////////////////////////////////////////
+// CapWindw::DrawCapBar()
+///////////////////////////////////////////////////////////
+void CapWindw::DrawCapBar(void)
+{
+  mouse.HideMouse();
+  setcolor(WHITE);
+  moveto(wx+20, wy+40);
+  lineto(wx+20, wy+20);
+  lineto(wx+ww-20, wy+20);
+  setcolor(BLACK);
+  lineto(wx+ww-20, wy+40);
+  lineto(wx+20, wy+40);
+  setfillstyle(SOLID_FILL, DARKGRAY);
+  bar(wx+21, wy+21, wx+ww-21, wy+39);
+  setcolor(WHITE);
+  int x = (wx+ww/2) - (strlen(label)*4);
+  outtextxy(x, wy+27, label);
+  mouse.ShowMouse();
+}
+
+// --------------------------------------------------------
+// Implementation of the CapTWindw class
+// --------------------------------------------------------
+
+///////////////////////////////////////////////////////////
+// CapTWindw::CapTWindw()
+///////////////////////////////////////////////////////////
+CapTWindw::CapTWindw(char *s1, char *s2, char *s3) :
+  CapWindw(0, 0, 0, 150, FALSE, TRUE, s1)
+{
+  // Calculate which string is the longest and
+  // use that width to calculate the window's width.
+  int w = strlen(s1) * 8 + 60;
+  if (strlen(s2) > strlen(s3))
+    ww = strlen(s2) * 8 + 60;
+  else
+    ww = strlen(s3) * 8 + 60;
+  if (w > ww) ww = w;
+
+  // Enforce a minimum width.
+  if (ww < 230) ww = 230;
+
+  // Calculate the window's x,y coordinates.
+  wx = 320 - ww/2;
+  wy = 164;
+
+  // Set the window's text.
+  line1 = s2;
+  line2 = s3;
+}
+
+///////////////////////////////////////////////////////////
+// CapTWindw::DrawWindow()
+///////////////////////////////////////////////////////////
+void CapTWindw::DrawWindow(void)
+{
+  // Draw the captioned window.
+  CapWindw::DrawWindow();
+
+  // Position and draw window body text.
+  mouse.HideMouse();
+  int x = (wx+ww/2) - (strlen(line1)*8)/2;
+  setcolor(BLACK);
+  if (strlen(line2) == 0)
+    outtextxy(x, wy+68, line1);
+  else
+  {
+    outtextxy(x, wy+56, line1);
+    x = (wx+ww/2) - (strlen(line2)*8)/2;
+    outtextxy(x, wy+71, line2);
+  }
+  mouse.ShowMouse();
+}

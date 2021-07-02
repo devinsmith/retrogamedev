@@ -41,4 +41,37 @@ private:
   void WindwError(char *s);
 };
 
+///////////////////////////////////////////////////////////
+// CAPWINDW
+///////////////////////////////////////////////////////////
+class CapWindw : public Windw
+{
+protected:
+  char label[61];
+
+public:
+  CapWindw(int x, int y, int w, int h,
+      int bdr, int buf, char *s);
+  virtual void DrawWindow(void);
+  void SetCaption(char *s);
+
+private:
+  void DrawCapBar(void);
+};
+
+///////////////////////////////////////////////////////////
+// CAPTWINDW
+///////////////////////////////////////////////////////////
+class CapTWindw : public CapWindw
+{
+protected:
+  char *line1, *line2;
+  int button;
+
+public:
+  CapTWindw(char *s1, char *s2, char *s3);
+  virtual void DrawWindow(void);
+  int GetButton(void) { return button; }
+};
+
 #endif // _WINDW_H
