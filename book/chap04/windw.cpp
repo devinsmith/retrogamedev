@@ -501,7 +501,7 @@ void InputWindw::HandleInput(char k)
   // and that the string can hold another character.
   if ((k>31) && (k<127) && (l<80))
   {
-    // Add charater to string.
+    // Add character to string.
     input[l+1] = 0; input[l] = k;
 
     // Draw the portion of the string that will
@@ -651,7 +651,7 @@ void Button::ClickButton(void)
     free(buff);
   }
 
-  // Draw the button's border so the
+  // Draw the button's borders so the
   // button appears to be depressed.
   setcolor(DARKGRAY);
   moveto(wx+ww, wy);
