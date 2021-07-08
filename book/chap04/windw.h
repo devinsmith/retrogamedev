@@ -74,4 +74,86 @@ public:
   int GetButton(void) { return button; }
 };
 
+///////////////////////////////////////////////////////////
+// BUTTON
+///////////////////////////////////////////////////////////
+class Button : public Windw
+{
+private:
+  char label[20];
+  unsigned hotkey;
+  int altkey;
+
+public:
+  Button(int x, int y, char *s);
+  void DrawWindow(void);
+  int Clicked(EventMsg eventMsg);
+  void ClickButton(void);
+};
+
+///////////////////////////////////////////////////////////
+// OKWINDW
+///////////////////////////////////////////////////////////
+class OKWindw : public CapTWindw
+{
+private:
+  Button *butn;
+
+public:
+  OKWindw(char *s1, char *s2, char *s3);
+  virtual ~OKWindw(void);
+  virtual void DrawWindow(void);
+  virtual void RunWindow(void);
+};
+
+///////////////////////////////////////////////////////////
+// YESNOWINDW
+///////////////////////////////////////////////////////////
+class YesNoWindw : public CapTWindw
+{
+private:
+  Button *butn1, *butn2;
+
+public:
+  YesNoWindw(char *s1, char *s2, char *s3);
+  virtual ~YesNoWindw(void);
+  virtual void DrawWindow(void);
+  virtual void RunWindow(void);
+};
+
+///////////////////////////////////////////////////////////
+// YESNOCANWINDW
+///////////////////////////////////////////////////////////
+class YesNoCanWindw : public CapTWindw
+{
+private:
+  Button *butn1, *butn2, *butn3;
+
+public:
+  YesNoCanWindw(char *s1, char *s2, char *s3);
+  virtual ~YesNoCanWindw(void);
+  virtual void DrawWindow(void);
+  virtual void RunWindow(void);
+};
+
+///////////////////////////////////////////////////////////
+// INPUTWINDW
+///////////////////////////////////////////////////////////
+class InputWindw : public CapTWindw
+{
+private:
+  char input[81];
+  Button *butn1, *butn2;
+
+public:
+  InputWindw(char *s1, char *s2, char *s3);
+  virtual ~InputWindw(void);
+  void GetInput(char *s) { strcpy(s, input); }
+  virtual void DrawWindow(void);
+  virtual void RunWindow(void);
+
+private:
+  void HandleInput(char k);
+};
+
 #endif // _WINDW_H

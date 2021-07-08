@@ -9,4 +9,6 @@ All programs tested and written using Turbo C++ 3.0
 * windw.h / windw.cpp - Interface / Implementation for DOS window classes.
 * wndw1.cpp - Window demonstration program 1.
   * ![wndw1](img/wndw1_000.png)
+* wndw2.cpp - Window demonstration program 2.
+  * ![wndw1](img/wndw2_000.png)
 
