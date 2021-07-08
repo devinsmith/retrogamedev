@@ -10,5 +10,7 @@ All programs tested and written using Turbo C++ 3.0
 * wndw1.cpp - Window demonstration program 1.
   * ![wndw1](img/wndw1_000.png)
 * wndw2.cpp - Window demonstration program 2.
-  * ![wndw1](img/wndw2_000.png)
+  * ![wndw2](img/wndw2_000.png)
+* wndw3.cpp - Window demonstration program 3.
+  * ![wndw3](img/wndw3_000.png)
 
