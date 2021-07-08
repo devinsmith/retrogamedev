@@ -530,7 +530,7 @@ void InputWindw::HandleInput(char k)
     setfillstyle(SOLID_FILL, BLACK);
     bar(wx+15, wy+85, wx+ww-15, wy+99);
     setcolor(WHITE);
-    if (l < w)
+    if (l < w+1)
       outtextxy(wx+15, wy+88, input);
     else
     {
