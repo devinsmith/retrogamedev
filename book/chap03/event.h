@@ -10,7 +10,7 @@
 
 #define CR     13
 #define ESC    27
-#define BASKSP 8
+#define BACKSP 8
 
 // Event message structure.
 struct EventMsg
