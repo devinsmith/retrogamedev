@@ -1,4 +1,4 @@
-# Chapter 4: The Game of Life
+# Chapter 5: The Game of Life
 
 Development of Conway's game of Life using Turbo C++.
 
